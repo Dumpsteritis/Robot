@@ -14,23 +14,23 @@ public class Robot {
 		
 		Scanner scanner = new Scanner(System.in);
 		
-		while (batLevel > 25)
-		{	
-			RobotLoop.takeStep();
+		while (batLevel > 25){
+			Robot.takeStep();
 			stepYes = scanner.nextLine();
 			
 			if (stepYes.equalsIgnoreCase("Yes")) 
 			{
 				batLevel -= 25;
-				RobotLoop.batPercent();
+				Robot.batPercent();
 				System.out.println(batLevel);
 			}
 			else if(stepYes.equalsIgnoreCase("No")) 
 			{
-				RobotLoop.batPercent();
+				Robot.batPercent();
 				System.out.println(batLevel);
-			}	
-		}	
+			}
+		}
+		
 		if (batLevel <= 25)
 		{
 				System.out.println("Should I recharge myself?");
@@ -40,50 +40,47 @@ public class Robot {
 				if (stepYes.equalsIgnoreCase("Yes"))
 				{
 					batLevel= 100;
-					RobotLoop.batPercent();
+					Robot.batPercent();
 					System.out.println(batLevel);
 				}
 				else if (stepYes.equalsIgnoreCase("No"))
 				{
-					RobotLoop.takeStep();
+					Robot.takeStep();
 					stepYes = scanner.nextLine();
 						
 					if (stepYes.equalsIgnoreCase("Yes")) 
 					{
 						batLevel -= 25;
-						RobotLoop.batPercent();
+						Robot.batPercent();
 						System.out.println(batLevel);
 						System.out.println("I'm going to quickly recharge");
 						batLevel= 100;
-						RobotLoop.batPercent();
+						Robot.batPercent();
+						System.out.println(batLevel);
 					}
 					else if (stepYes.equalsIgnoreCase("No"))
 					{
-					RobotLoop.batPercent();
+					Robot.batPercent();
 					System.out.println(batLevel);
-					RobotLoop.takeStep();
+					Robot.takeStep();
 					stepYes = scanner.nextLine();
-					
-					while (batLevel > 25){
-						RobotLoop.takeStep();
-						stepYes = scanner.nextLine();
-						
-						if (stepYes.equalsIgnoreCase("Yes")) 
-						{
-							batLevel -= 25;
-							RobotLoop.batPercent();
-							System.out.println(batLevel);
-						}
-						else if(stepYes.equalsIgnoreCase("No")) 
-						{
-							RobotLoop.batPercent();
-							System.out.println(batLevel);
-					}
-				}
-			}
-		
+				}	
 			}
 		}
 	}
+	private static void batPercent() 
+		{
+		// TODO Auto-generated method stub
+		System.out.print("> ");
+		System.out.print("Percentage of battery remaining is: ");		
+		}
+
+	private static void takeStep() 
+		{
+		// TODO Auto-generated method stub
+		System.out.println("Should I take a step? (Yes or No?)");
+		System.out.print("> ");
+		}
 }
+
 
